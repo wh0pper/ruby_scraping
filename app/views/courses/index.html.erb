@@ -1,8 +1,11 @@
 <div class="container">
   <div class="courses">
+    <p><%= @course_links %></p>
     <ul>
       <% @course_names.each do |course| %>
-        <li><%= link_to course, course_path(course) %></li>
+        <li>
+          <a<%= link_to course, course_path(course) %>
+        </li>
       <% end %>
     </ul>
   </div>

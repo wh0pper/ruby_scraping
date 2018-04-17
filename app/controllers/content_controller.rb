@@ -4,6 +4,7 @@ class ContentController < ApplicationController
   #
   # end
 
+  
   def scrape
     doc = Nokogiri::HTML(open('https://www.learnhowtoprogram.com/rails/ruby-on-rails-basics/database-scopes-and-queries'))
     @lesson_paragraphs = []

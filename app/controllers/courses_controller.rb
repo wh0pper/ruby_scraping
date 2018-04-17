@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @course_names = scrapeCourses
+    @course_names, @course_links = scrapeCourses
     render :index
   end
 
@@ -10,11 +10,13 @@ class CoursesController < ApplicationController
 
   def scrapeCourses
     doc = Nokogiri::HTML(open('https://www.learnhowtoprogram.com/courses'))
-    list = []
+    course_names = []
+    course_links = []
     doc.css('.container > .row > .col-xs-12 > form > ul > li').map do |x|
-      list << x.text.strip
+      course_names << x.text.strip
+      course_links << x.css('a')[0]['href']
     end
-    return list
+    return course_names, course_links
   end
 
 end
