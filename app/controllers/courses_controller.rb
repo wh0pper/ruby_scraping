@@ -4,9 +4,8 @@ class CoursesController < ApplicationController
     @courses = []
     course_names.each do |x|
       course = Course.create(name: x)
-      @courses.push(course)
     end
-    binding.pry
+    # binding.pry
     @courses = Course.all
     render :index
   end
