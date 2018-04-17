@@ -4,8 +4,7 @@
     <ul>
       <% @courses.each do |course| %>
         <li>
-          <%= course.name %>
-          <%= course.id %>
+          <%= link_to course.name, course_path(course) %>
         </li>
       <% end %>
     </ul>

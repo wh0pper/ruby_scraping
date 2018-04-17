@@ -1,1 +1,7 @@
-<h1> @course.name </h1>
+<h1> <%= @course.name %> </h1>
+<ul>
+  <%= @weeks %>
+  <% @weeks.each do |week| %>
+    <li><%= week.description %></li>
+  <% end %>
+</ul>
