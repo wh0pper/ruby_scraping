@@ -11,6 +11,6 @@ class CourseTable < ActiveRecord::Migration[5.1]
       t.column :number, :integer
       t.column :description, :string
       t.timestamps
-    end 
+    end
   end
 end

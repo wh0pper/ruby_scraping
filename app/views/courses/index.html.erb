@@ -1,10 +1,11 @@
 <div class="container">
   <div class="courses">
-    <p><%= @course_links %></p>
+    <!-- <p><%= @course_links %></p> -->
     <ul>
-      <% @course_names.each do |course| %>
+      <% @courses.each do |course| %>
         <li>
-          <a<%= link_to course, course_path(course) %>
+          <%= course.name %>
+          <%= course.id %>
         </li>
       <% end %>
     </ul>
