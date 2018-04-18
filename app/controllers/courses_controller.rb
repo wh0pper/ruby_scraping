@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    scrapeWeeks(@course.name)
+    scrapeWeeks(@course)
     @weeks = Week.all
   end
 
@@ -27,12 +27,12 @@ class CoursesController < ApplicationController
     return course_names #, course_links
   end
 
-  def scrapeWeeks(course_name)
-    url = "https://www.learnhowtoprogram.com/#{course_name.downcase}"
+  def scrapeWeeks(course)
+    url = "https://www.learnhowtoprogram.com/#{course.name.downcase}"
     doc = Nokogiri::HTML(open(url))
     doc.css('.sections-list > .section > a').each_with_index do |x, i|
-      week = Week.create(description: x.text, number: i)
-      binding.pry
+      week = Week.create(description: x.text, number: i, course_id: course.id)
+      # binding.pry
     end
   end
 end
